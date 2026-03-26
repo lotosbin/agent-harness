@@ -5,3 +5,5 @@
 [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
 [Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+
+[garrytan/gstack](https://github.com/garrytan/gstack)
