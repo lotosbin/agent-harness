@@ -1,0 +1,64 @@
+@startuml GSD-How-To-Use
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontSize 14
+skinparam defaultFontName "PingFang SC, Arial"
+
+title GSD 使用流程 (OpenSpec 工作流)
+
+|角色|
+start
+
+:用户提出想法/需求;
+
+:AI 使用 brainstorming 技能\n通过苏格拉底式提问完善想法;
+
+note right
+  例: "帮我规划一个评论系统"
+  - 需要嵌套回复吗?
+  - 需要审核机制吗?
+end note
+
+:用户确认设计方案;
+
+:创建变更提案\n/opsx:propose <想法>;
+
+split
+  :生成 proposal.md\n(Why + What + Capabilities);
+split again
+  :生成 design.md\n(技术设计 + 风险评估);
+split again
+  :生成 tasks.md\n(可执行任务列表);
+end split
+
+partition "循环: 执行任务" {
+  :使用 /opsx:apply 开始执行;
+
+  while (有未完成任务?) is (是)
+    :AI 执行单个任务;
+    :按 TDD 流程开发\n红→绿→重构;
+    :更新任务状态;
+  endwhile (否)
+}
+
+:使用 /opsx:verify 验证变更;
+
+if (验证通过?) then (是)
+  :使用 /opsx:archive 归档;
+  :提案完成，进入仓库历史;
+else (否)
+  :修复问题;
+  :重新验证;
+endif
+
+stop
+
+legend right
+  <b>关键斜杠命令</b>
+  /opsx:propose - 创建提案
+  /opsx:apply  - 执行任务
+  /opsx:verify - 验证变更
+  /opsx:archive - 归档完成
+endlegend
+
+@enduml
