@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #1a365d; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  padding: 25pt 50pt;
+  border-bottom: 1pt solid #2d4a77;
+}
+h1 { color: #ffffff; font-size: 26pt; margin: 0; font-weight: bold; }
+.flow {
+  flex: 1; padding: 25pt 40pt;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.steps {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 8pt;
+}
+.step {
+  background: #00a896; padding: 12pt 18pt; border-radius: 6pt;
+  text-align: center; min-width: 90pt;
+}
+.step-num { color: rgba(255,255,255,0.6); font-size: 10pt; margin: 0 0 4pt 0; }
+.step-name { color: #ffffff; font-size: 13pt; margin: 0; font-weight: bold; }
+.arrow { color: #4a5568; font-size: 20pt; }
+.bottom-flow {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 20pt; gap: 8pt;
+}
+.bottom-spacer { height: 50pt; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>核心工作流：7 步从想法到代码</h1>
+</div>
+<div class="flow">
+  <div class="steps">
+    <div class="step"><p class="step-num">Step 1</p><p class="step-name">头脑风暴</p></div>
+    <p class="arrow">→</p>
+    <div class="step"><p class="step-num">Step 2</p><p class="step-name">设计评审</p></div>
+    <p class="arrow">→</p>
+    <div class="step"><p class="step-num">Step 3</p><p class="step-name">隔离工作区</p></div>
+    <p class="arrow">→</p>
+    <div class="step"><p class="step-num">Step 4</p><p class="step-name">任务规划</p></div>
+  </div>
+  <div class="bottom-flow">
+    <div class="step"><p class="step-num">Step 7</p><p class="step-name">合并发布</p></div>
+    <p class="arrow">←</p>
+    <div class="step"><p class="step-num">Step 6</p><p class="step-name">代码审查</p></div>
+    <p class="arrow">←</p>
+    <div class="step"><p class="step-num">Step 5</p><p class="step-name">TDD 开发</p></div>
+  </div>
+</div>
+<div class="bottom-spacer"></div>
+</body>
+</html>

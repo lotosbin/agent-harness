@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #ffffff; font-family: Arial, sans-serif;
+  position: relative;
+}
+.title { position: absolute; top: 22pt; left: 50pt; }
+.title h1 { color: #1a365d; font-size: 26pt; margin: 0; font-weight: bold; }
+.table { position: absolute; top: 65pt; left: 50pt; right: 50pt; bottom: 50pt; }
+.row { display: flex; height: 42pt; }
+.cell { padding: 0 14pt; display: flex; align-items: center; }
+.c0 { width: 130pt; background: #1a365d; }
+.c0 p { color: #ffffff; font-size: 13pt; font-weight: bold; margin: 0; }
+.c1 { flex: 1; background: #fed7d7; }
+.c1 p { color: #c53030; font-size: 13pt; margin: 0; }
+.c2 { flex: 1; background: #c6f6d5; }
+.c2 p { color: #276749; font-size: 13pt; margin: 0; }
+.row.data { border-bottom: 1pt solid #e2e8f0; }
+</style>
+</head>
+<body>
+<div class="title"><h1>效果对比</h1></div>
+<div class="table">
+  <div class="row">
+    <div class="cell c0"><p>维度</p></div>
+    <div class="cell c1"><p>无流程 AI</p></div>
+    <div class="cell c2"><p>Superpowers</p></div>
+  </div>
+  <div class="row data">
+    <div class="cell c0"><p>Bug 率</p></div>
+    <div class="cell c1"><p>高（代码未经测试）</p></div>
+    <div class="cell c2"><p>低（每步验证）</p></div>
+  </div>
+  <div class="row data">
+    <div class="cell c0"><p>可维护性</p></div>
+    <div class="cell c1"><p>低（临时代码）</p></div>
+    <div class="cell c2"><p>高（计划驱动）</p></div>
+  </div>
+  <div class="row data">
+    <div class="cell c0"><p>团队协作</p></div>
+    <div class="cell c1"><p>难（上下文丢失）</p></div>
+    <div class="cell c2"><p>易（设计文档持久化）</p></div>
+  </div>
+  <div class="row data">
+    <div class="cell c0"><p>调试效率</p></div>
+    <div class="cell c1"><p>慢（Bug 原因不明）</p></div>
+    <div class="cell c2"><p>快（系统化调试）</p></div>
+  </div>
+  <div class="row data">
+    <div class="cell c0"><p>代码复用</p></div>
+    <div class="cell c1"><p>差（重复造轮子）</p></div>
+    <div class="cell c2"><p>好（Skills 可组合）</p></div>
+  </div>
+</div>
+</body>
+</html>

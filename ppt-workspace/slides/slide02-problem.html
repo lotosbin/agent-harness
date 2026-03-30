@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #ffffff; font-family: Arial, sans-serif;
+  position: relative;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.sidebar {
+  position: absolute; top: 0; left: 0; width: 8pt; height: 405pt;
+  background: #e53e3e;
+}
+.content {
+  position: absolute; top: 30pt; left: 8pt; right: 0;
+  bottom: 95pt;
+}
+h1 {
+  color: #1a365d; font-size: 28pt; margin-bottom: 20pt;
+  font-weight: bold;
+}
+.problem-item {
+  color: #2d3748; font-size: 16pt; margin-bottom: 12pt;
+  display: flex; align-items: center;
+}
+.bullet {
+  width: 10pt; height: 10pt; background: #e53e3e;
+  border-radius: 50%; margin-right: 12pt; flex-shrink: 0;
+}
+.conclusion {
+  margin-top: 12pt; padding: 14pt;
+  background: #fff5f5; border-left: 4pt solid #e53e3e;
+}
+.conclusion p { color: #c53030; font-size: 15pt; }
+</style>
+</head>
+<body>
+<div class="sidebar"></div>
+<div class="content">
+  <h1>你是否遇到过这些困境？</h1>
+  <div class="problem-item"><div class="bullet"></div><p>AI 生成了一堆代码，但跑不起来</p></div>
+  <div class="problem-item"><div class="bullet"></div><p>让 AI 修 Bug，越修越多</p></div>
+  <div class="problem-item"><div class="bullet"></div><p>每次对话都要从头解释项目背景</p></div>
+  <div class="problem-item"><div class="bullet"></div><p>AI 写的代码自己都看不懂，更不敢交给团队</p></div>
+  <div class="conclusion">
+    <p>问题的根源不是 AI 不够聪明，而是缺少让 AI 稳定工作的流程。</p>
+  </div>
+</div>
+</body>
+</html>

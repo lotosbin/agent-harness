@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #ffffff; font-family: Arial, sans-serif;
+  position: relative;
+}
+.sidebar {
+  position: absolute; top: 0; left: 0; width: 8pt; height: 405pt;
+  background: #00a896;
+}
+.content {
+  position: absolute; top: 30pt; left: 8pt; right: 0;
+  bottom: 40pt;
+}
+h1 { color: #1a365d; font-size: 28pt; margin: 0 0 20pt 0; font-weight: bold; }
+.section { margin-bottom: 18pt; }
+.section h2 { color: #00a896; font-size: 18pt; margin: 0 0 8pt 0; }
+.code-block {
+  background: #2d3748; padding: 12pt 18pt; border-radius: 6pt;
+  margin: 0;
+}
+.code-block p { color: #68d391; font-size: 13pt; margin: 0; font-family: Courier New, monospace; }
+.code-block p + p { margin-top: 6pt; }
+.note { color: #718096; font-size: 13pt; margin: 8pt 0 0 0; }
+</style>
+</head>
+<body>
+<div class="sidebar"></div>
+<div class="content">
+  <h1>安装（3 分钟搞定）</h1>
+  <div class="section">
+    <h2>Claude Code（推荐）</h2>
+    <div class="code-block">
+      <p>/plugin marketplace add obra/superpowers-marketplace</p>
+      <p>/plugin install superpowers@superpowers-marketplace</p>
+    </div>
+    <p class="note">其他平台：Cursor / Codex / Gemini CLI</p>
+  </div>
+  <div class="section">
+    <h2>验证安装</h2>
+    <div class="code-block">
+      <p>帮我规划这个功能：用户登录系统</p>
+    </div>
+    <p class="note">AI 自动调用 brainstorming、writing-plans 技能 = 安装成功</p>
+  </div>
+</div>
+</body>
+</html>

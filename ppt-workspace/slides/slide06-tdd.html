@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #1a365d; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  padding: 25pt 50pt 20pt 50pt;
+  border-bottom: 1pt solid #2d4a77;
+}
+h1 { color: #ffffff; font-size: 26pt; margin: 0; font-weight: bold; }
+.main {
+  flex: 1; padding: 25pt 50pt;
+  display: flex; gap: 40pt;
+}
+.cycle { flex: 1; }
+.cycle h2 { color: #1a365d; font-size: 18pt; margin: 0 0 15pt 0; }
+.red-box { background: #fed7d7; padding: 18pt; border-radius: 8pt; margin-bottom: 12pt; }
+.red-box p { color: #c53030; font-size: 14pt; margin: 0; font-weight: bold; }
+.green-box { background: #c6f6d5; padding: 18pt; border-radius: 8pt; margin-bottom: 12pt; }
+.green-box p { color: #276749; font-size: 14pt; margin: 0; font-weight: bold; }
+.refactor-box { background: #e2e8f0; padding: 18pt; border-radius: 8pt; }
+.refactor-box p { color: #4a5568; font-size: 14pt; margin: 0; font-weight: bold; }
+.law {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+}
+.law-box {
+  background: #1a365d; padding: 30pt; border-radius: 12pt;
+  border: 2pt solid #00a896;
+}
+.law-box p { color: #ffffff; font-size: 16pt; margin: 0; text-align: center; line-height: 1.8; }
+.bottom-spacer { height: 55pt; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>TDD 红-绿-重构循环</h1>
+</div>
+<div class="main">
+  <div class="cycle">
+    <h2>核心循环</h2>
+    <div class="red-box"><p>RED（红）：写一个失败的测试</p></div>
+    <div class="green-box"><p>GREEN（绿）：写最小代码让测试通过</p></div>
+    <div class="refactor-box"><p>REFACTOR（重构）：改善代码，保持测试通过</p></div>
+  </div>
+  <div class="law">
+    <div class="law-box">
+      <p>铁律：</p>
+      <p style="font-size: 18pt; font-weight: bold; color: #00a896; margin-top: 15pt;">没有先失败的测试，就不能写生产代码。</p>
+    </div>
+  </div>
+</div>
+<div class="bottom-spacer"></div>
+</body>
+</html>
