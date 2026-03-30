@@ -1,3 +1,4 @@
+# 一张图看懂 Superpowers 如何使用
 ```plantuml
 @startuml
 skinparam backgroundColor #FEFEFE
@@ -9,7 +10,8 @@ title 安装 Superpowers（3 分钟）
 |#E8F4FD|步骤 3|
 :开启新会话验证;
 |#CCFFCC|完成|
-:安装成功\nAI 自动调用技能;
+:安装成功
+AI 自动调用技能;
 step1 -> step2
 step2 -> step3
 step3 -> complete
@@ -89,11 +91,16 @@ end note
 @startuml
 skinparam backgroundColor #FEFEFE
 title TDD 红绿重构循环
-state RED : RED（红）\n写失败的测试
-state VERIFY_RED : 验证失败\n符合预期
-state GREEN : GREEN（绿）\n写最小实现
-state VERIFY_PASS : 验证通过\n所有测试绿
-state REFACTOR : REFACTOR\n重构优化
+state RED : RED（红）
+写失败的测试
+state VERIFY_RED : 验证失败
+符合预期
+state GREEN : GREEN（绿）
+写最小实现
+state VERIFY_PASS : 验证通过
+所有测试绿
+state REFACTOR : REFACTOR
+重构优化
 [*] --> RED
 RED --> VERIFY_RED
 VERIFY_RED --> GREEN : 失败
@@ -103,7 +110,8 @@ VERIFY_PASS --> REFACTOR : 通过
 VERIFY_PASS -down-> GREEN : 失败
 REFACTOR --> VERIFY_PASS
 note right of RED
-没有先失败的测试\n就不能写生产代码
+没有先失败的测试
+就不能写生产代码
 end note
 @enduml
 ```
