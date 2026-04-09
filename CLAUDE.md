@@ -1,6 +1,7 @@
 # CLAUDE.md
 
 本文為 Claude Code（claude.ai/code）之操作指南，專用於本代碼庫。
+每个研究一个专项目录
 
 ## 項目概述
 
