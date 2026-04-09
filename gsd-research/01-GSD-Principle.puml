@@ -1,0 +1,57 @@
+@startuml GSD-Principle
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontSize 14
+skinparam defaultFontName "PingFang SC, Arial"
+
+title GSD (Get Shit Done) 原理
+
+package "核心理念" {
+  card "规格驱动开发\nSpec-Driven Development" as SDD
+  card "上下文持久化\nContext Persistence" as CP
+  card "变更追踪\nChange Tracking" as CT
+  card "迭代演进\nIterative Evolution" as IE
+}
+
+package "解决问题" {
+  card "AI 生成代码与\n预期不符" as P1
+  card "每次会话\n上下文丢失" as P2
+  card "变更原因\n无法追溯" as P3
+  card "团队协作\n困难" as P4
+}
+
+SDD -down-> P1 : 解决
+CP -down-> P2 : 解决
+CT -down-> P3 : 解决
+IE -down-> P4 : 解决
+
+package "核心价值" {
+  card "规格与代码\n共存于仓库" as V1
+  card "AI 每次都知道\n要做什么" as V2
+  card "需求变更\n清晰可见" as V3
+  card "30+ AI助手\n原生支持" as V4
+}
+
+P1 -down-> V1
+P2 -down-> V2
+P3 -down-> V3
+P4 -down-> V4
+
+package "开发哲学" {
+  card "流动而非僵化\nFluid not rigid" as F1
+  card "迭代而非瀑布\nIterative not waterfall" as F2
+  card "简单而非复杂\nEasy not complex" as F3
+  card "棕地+绿地\nBrownfield+Greenfield" as F4
+}
+
+V1 -down-> F1
+V2 -down-> F2
+V3 -down-> F3
+V4 -down-> F4
+
+legend right
+  <b>GSD = Get Shit Done</b>
+  让 AI 编程从碰运气，变成稳定输出
+endlegend
+
+@enduml

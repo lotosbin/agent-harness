@@ -1,0 +1,91 @@
+@startuml GSD-How-To-Use
+!theme aws-orange
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontSize 13
+skinparam defaultFontName "PingFang SC, Arial"
+skinparam activityStyle roundBox
+skinparam noteFontSize 11
+
+title **一张图看懂 GSD 如何使用**
+
+|#1E88E5|用户|endfile
+
+start
+
+:提出想法/需求;
+
+note right
+  例: "帮我规划一个评论系统"
+end note
+
+|#FF9800|AI|endfile
+
+:brainstorming 技能\n通过苏格拉底式提问完善想法;
+
+note right
+  - 需要嵌套回复吗?
+  - 需要审核机制吗?
+end note
+
+|#4CAF50|设计确认|endfile
+
+:用户逐节确认设计方案;
+
+|#FF9800|AI|endfile
+
+:创建变更提案\n/opsx:propose;
+
+|#1E88E5|文档生成|endfile
+
+fork
+  :proposal.md
+  Why + What + Capabilities]
+fork again
+  :design.md
+  技术选型 + 风险评估]
+fork again
+  :tasks.md
+  任务分解 + 验收标准]
+end fork
+
+|#4CAF50|执行任务|endfile
+
+:/opsx:apply
+开始执行任务;
+
+:TDD 开发循环
+红(写失败测试)
+绿(写最小实现)
+重构(改善代码);
+
+:更新任务状态;
+
+|#FF9800|AI|endfile
+
+:/opsx:verify
+验证变更;
+
+if (验证通过?) then (是)
+  :/opsx:archive
+  归档提案;
+  stop
+else (否)
+  :修复问题;
+  kill
+endif
+
+legend right
+  <b>关键斜杠命令</b>
+  -------------------
+  /opsx:propose  创建提案
+  /opsx:apply   执行任务
+  /opsx:verify  验证变更
+  /opsx:archive 归档完成
+  -------------------
+  <b>适用 AI 助手</b>
+  Claude Code, Cursor
+  Windsurf, Gemini CLI
+  GitHub Copilot 等 30+
+endlegend
+
+@enduml

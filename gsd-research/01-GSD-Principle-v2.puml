@@ -1,0 +1,52 @@
+@startuml GSD-Principle
+!theme aws-orange
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontSize 13
+skinparam defaultFontName "PingFang SC, Arial"
+
+title **一张图看懂 GSD 原理**
+
+package "<b>核心问题\nAI 编程助手的困境" as PROBLEMS #LightPink {
+  rectangle "AI 生成代码与预期不符" as P1
+  rectangle "每次会话上下文丢失" as P2
+  rectangle "变更原因无法追溯" as P3
+  rectangle "团队协作困难重重" as P4
+}
+
+package "<b>解决方案\nGSD 规格驱动开发" as SOLUTIONS #LightGreen {
+  rectangle "规格优先\n先定规格再写代码" as S1
+  rectangle "上下文持久化\n规格存入仓库" as S2
+  rectangle "变更追踪\nspec delta 可追溯" as S3
+  rectangle "团队共享\n规格即文档" as S4
+}
+
+package "<b>核心价值" as VALUES #LightBlue {
+  rectangle "规格与代码共存于仓库" as V1
+  rectangle "AI 每次都知道要做什么" as V2
+  rectangle "需求变更清晰可见" as V3
+  rectangle "30+ AI助手原生支持" as V4
+}
+
+package "<b>开发哲学" as PHILOSOPHY #LightYellow {
+  rectangle "流动而非僵化\nFluid not rigid" as F1
+  rectangle "迭代而非瀑布\nIterative not waterfall" as F2
+  rectangle "简单而非复杂\nEasy not complex" as F3
+  rectangle "棕地+绿地\nBrownfield+Greenfield" as F4
+}
+
+P1 -[#FF6B6B,dashed]-> S1
+P2 -[#FF6B6B,dashed]-> S2
+P3 -[#FF6B6B,dashed]-> S3
+P4 -[#FF6B6B,dashed]-> S4
+
+S1 -[#4CAF50]-> V1
+S2 -[#4CAF50]-> V2
+S3 -[#4CAF50]-> V3
+S4 -[#4CAF50]-> V4
+
+V1 -[#2196F3,dotted]-> F1
+V2 -[#2196F3,dotted]-> F2
+V3 -[#2196F3,dotted]-> F3
+V4 -[#2196F3,dotted]-> F4
+
+@enduml
