@@ -1,182 +1,153 @@
-# Paseo Network 入門指南
+# Paseo 入门指南
 
-本指南協助開發者在 30 分鐘內完成 Paseo Network 的基礎接入，開始測試你的 Polkadot/Substrate 應用。
+本指南帮助开发者在 10 分钟内完成 Paseo 的安装和基础使用。
 
 ## 前置需求
 
-- 一台 Linux/macOS 電腦（建議 4 核 CPU、8GB RAM）
-- 已安裝 Rust 工具鏈（参考 [rustup.rs](https://rustup.rs)）
-- 基本的命令行操作能力
+- Node.js 18+
+- npm 或 yarn
+- 至少一个 coding agent（Claude Code / Codex / OpenCode / Copilot）
 
-## 第一步：獲取測試代幣（PAS）
+## 安装
 
-1. 前往 [Polkadot Faucet](https://faucet.polkadot.io/)
-2. 在錢包（如 Talisman、SubWallet、Polkadot.js）中複製你的 Paseo 地址
-3. 在 Faucet 頁面粘貼地址，選擇 **Paseo** 網絡
-4. 點擊「Request」領取代幣
-
-> 每次請求大約獲得 500 PAS，冷卻時間約 24 小時。
-
-## 第二步：選擇接入方式
-
-### 方案 A：使用 Polkadot.js Apps（最簡單）
-
-無需安裝任何東西，直接使用瀏覽器訪問：
-
-```
-https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com
-```
-
-常用公共 RPC 端點：
-
-| 提供商 | 端點 |
-|--------|------|
-| Dwellir | `wss://paseo-rpc.dwellir.com` |
-| Radium Block | `wss://paseo-rpc.radiumblock.io` |
-| Lightning Labs | `wss://paseo.elara.patract.io` |
-
-切換網絡：在 Apps 頁面左上角點擊「測試網絡」→「Paseo」
-
-### 方案 B：運行自有節點
+### 方案一：CLI（推荐）
 
 ```bash
-# 克隆 Polkadot SDK
-git clone https://github.com/paritytech/polkadot-sdk
-cd polkadot-sdk/polkadot
-
-# 運行 Paseo full node
-cargo build --release --bin polkadot
-./target/release/polkadot \
-  --chain paseo \
-  --name "你的節點名" \
-  --telemetry-url "wss://telemetry.polkadot.io/submit/ 0" \
-  --ws-port 9944
+npm install -g @getpaseo/cli
 ```
 
-### 方案 C：使用 Docker
+### 方案二：桌面应用
+
+从 [GitHub Releases](https://github.com/getpaseo/paseo/releases) 下载最新版本
+
+### 方案三：移动端
+
+- iOS：App Store 搜索 "Paseo"
+- Android：Google Play 搜索 "Paseo"
+
+## 启动
+
+### 终端启动
 
 ```bash
-docker run -d \
-  --name polkadot-paseo \
-  -p 30333:30333 \
-  -p 9944:9944 \
-  parity/polkadot:latest \
-  --chain paseo \
-  --name "你的節點名"
+paseo
 ```
 
-## 第三步：連接錢包
+首次启动会显示 QR 码，扫描后可在移动端控制。
 
-1. 安裝錢包擴展：Talisman、SubWallet 或 Polkadot.js Extension
-2. 創建或導入帳戶
-3. 在錢包中添加 **Paseo** 網絡（通常錢包會自動識別）
-4. 手動配置的網絡參數：
-   - **RPC URL**：`wss://paseo-rpc.dwellir.com`
-   - **Chain ID**：Paseo relay chain
-   - **Symbol**：PAS
-   - **Decimals**：12
+### Web 版本
 
-## 第四步：部署智能合約
+访问 https://app.paseo.sh
 
-### 在 Asset Hub 上部署 Solidity 合約（EVM）
+## 基本使用
 
-1. 在 Polkadot.js Apps 中，切換到 **Asset Hub Paseo** parachain
-2. 進入「開發者」→「合約」
-3. 選擇 Remix IDE 或 Hardhat 作為部署工具
-4. 連接到 Paseo Asset Hub 的 RPC：`wss://paseo-asset-hub-rpc.dwellir.com`
+### 1. 运行 Agent
 
-**Remix 配置示例**：
+```bash
+# 使用 Claude Code
+paseo run --provider claude "implement user authentication"
 
-```javascript
-// 在 Remix 中選擇 "Injected Web3" 環境
-// 網絡：AssetHub Paseo
-// 部署你的 Solidity 合約
+# 使用 Codex
+paseo run --provider codex "write unit tests"
+
+# 使用指定模型
+paseo run --provider opus-4 "implement feature X"
 ```
 
-### 使用 Hardhat 部署
+### 2. 查看运行中的 Agent
 
-```javascript
-// hardhat.config.js
-module.exports = {
-  networks: {
-    paseo: {
-      url: "https://paseo-asset-hub-rpc.dwellir.com",
-      chainId: 10000111,  // Paseo Asset Hub chain ID
+```bash
+paseo ls
+```
+
+### 3. 附加到 Agent
+
+查看实时输出：
+```bash
+paseo attach <agent-id>
+```
+
+### 4. 发送消息
+
+给运行中的 agent 发送新任务：
+```bash
+paseo send <agent-id> "also add integration tests"
+```
+
+### 5. Worktree 隔离
+
+在独立 Git 分支上运行 agent：
+```bash
+paseo run --worktree feature-x "implement feature X"
+```
+
+## 配置
+
+Paseo 配置文件位于 `~/.config/paseo/` 或项目根目录的 `paseo.json`。
+
+```json
+{
+  "providers": {
+    "claude": {
+      "command": "claude",
+      "args": ["--print"]
+    },
+    "codex": {
+      "command": "codex",
+      "apiKey": "sk-..."
     }
+  },
+  "relay": {
+    "enabled": true,
+    "port": 8080
   }
-};
+}
 ```
 
-### 在 Asset Hub 上部署 Ink! 合約（WASM）
+## 快捷键
 
-1. 編寫 Ink! 合約（Rust）
-2. 使用 `cargo contract` 工具編譯
-3. 在 Polkadot.js Apps 的 Asset Hub 中上傳 `.contract` 文件
+| 快捷键 | 功能 |
+|--------|------|
+| ⌘K | 命令面板 |
+| ⌘N | 新建 agent |
+| ⌘D | 垂直分屏 |
+| ⌘⇧D | 水平分屏 |
+| ⌘W | 关闭面板 |
+| ⌘1-9 | 切换面板 |
 
-## 第五步：測試 XCM 跨鏈消息
+## 常见问题
 
-1. 在 Polkadot.js Apps 中連接 Paseo Relay Chain
-2. 進入「開發者」→「Extrinsics」
-3. 選擇 `xcmPallet.send()` 或 `polkadotXcm.send()`
-4. 指定目標 parachain 和要傳輸的資產/消息
+### Q: 如何连接移动端？
 
-```javascript
-// 從 Relay Chain 發送 XCM 到 Asset Hub
-xcmPallet.send(
-  { V3: { parents: 0, interior: { X1: { Parachain: 1000 } } } },  // Asset Hub
-  {
-    V3: [
-      { WithdrawAsset: [...] },
-      { BuyExecution: { ... } },
-      { Transact: { ... } }
-    ]
-  }
-)
+在移动端安装 Paseo app，然后：
+1. 在桌面端运行 `paseo`
+2. 扫描显示的 QR 码
+3. 即可从手机控制 agent
+
+### Q: 支持哪些 agent？
+
+- Claude Code（Anthropic）
+- Codex（OpenAI）
+- OpenCode
+- Copilot
+- Pi
+
+### Q: 代码安全吗？
+
+安全！代码从不离开你的机器。Paseo 只传输：
+- agent 的文字输出
+- 你的指令
+
+所有远程连接都是 E2E 加密。
+
+### Q: 如何自托管 Relay？
+
+```bash
+paseo relay --port 8080
 ```
-
-## 第六步：申請 Parachain Slot 或 Coretime
-
-### 申請 Coretime（推薦）
-
-1. 前往 https://app.regionx.tech/
-2. 連接錢包，選擇 Paseo 網絡
-3. 購買 Coretime（使用 PAS 代幣）
-4. 將 Coretime 分配給你的 parachain
-
-> Paseo 的 Coretime interlude 周期為 **2 天**（Polkadot 主網為 7 天），適合快速測試。
-
-### 申請 Parachain Slot
-
-通過 PAS 提案（PAS-9）申請：
-
-1. 準備 parachain 規格文件和 head-data
-2. 在 SubSquare（https://app.paseo.place/）提交 slot 申請提案
-3. 等待治理投票通過
-4. 通過眾籌（crowdloan）租用 slot
-
-## 常見問題
-
-### Q：為什麼我的餘額顯示為 0？
-
-確保錢包已切換到 **Paseo 網絡**（不是 Polkadot 主網或 Kusama）。檢查 RPC 端點是否正確指向 Paseo。
-
-### Q：Faucet 領取失敗怎麼辦？
-
-- 檢查冷卻時間是否已過
-- 嘗試更換 RPC 端點
-- 加入 [Matrix 房間](https://matrix.to/#/#paseo:matrix.org) 請求幫助
-
-### Q：如何運行驗證人節點？
-
-參考 [PAS-7 硬體規格](https://github.com/paseo-network/paseo-action-submission) 並聯繫 Paseo Governance Team 完成 KYC/Whitelist 流程。
-
-### Q：EVM 合約 gas 費用高怎麼辦？
-
-PAS 代幣無真實價值，可多次從 Faucet 領取。若費用異常高，檢查是否連接到了 Relay Chain 而非 Asset Hub。
 
 ## 下一步
 
-- 閱讀完整的 [Paseo 文檔](https://docs.paseo.sh)
-- 參與 [PAS 提案討論](https://github.com/paseo-network/paseo-action-submission)
-- 加入 Paseo Matrix 社區：[#paseo:matrix.org](https://matrix.to/#/#paseo:matrix.org)
-- 探索 [Passet Hub](https://github.com/paseo-network/passet-hub) 的合約範例
+- 阅读完整文档：https://paseo.sh/docs
+- 加入 Discord 社区
+- 探索 Skills：https://paseo.sh/docs/skills
