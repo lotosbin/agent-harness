@@ -3,7 +3,7 @@
 ## 任务
 
 - Issue: YUA-41 — feat: 研究SOP增加步骤, 使用 https://github.com/safishamsi/graphify
-- 状态: investigate
+- 状态: implement
 - Run: 1
 
 ## 工作记录
@@ -19,24 +19,28 @@
 
 ### 受阻事项
 
-- 无法通过 GitHub API 访问 Linear issue（网络问题），无法发布 Investigation comment 到 Linear
+- GitHub API 无法连接（网络问题），无法发布 Investigation comment 到 Linear
 - 调查结论已保存至 `docs/YUA-41-investigation.md`
 
 ### 实现 (2026-05-10)
 
-**分支**: `yua-41-graphify-sop`
-**PR**: https://github.com/lotosbin/agent-harness/pull/17
+**分支**: `yua-41-graphify-sop`（已从 main 创建并推送至 origin）
 
 **改动内容**:
-- `CLAUDE.md`：研究步骤增加第 1.5 步 — `用 graphify 提取代码库知识图谱`
+- `CLAUDE.md`：研究步骤增加第 1.5 步 — `用 graphify 提取代码库知识图谱（`/graphify .`），辅助理解核心模块和跨文件关联`
 - `.gitignore`：增加 `graphify-out/`
+- `research/graphify/研究报告.md`：新增完整研究报告（因果体用+洞见结构）
+- `docs/YUA-41-investigation.md`：调研总结
+- `docs/YUA-41-workpad.md`：工作记录
 
 **测试结果**:
 - CLAUDE.md 语法正确，内容可读
 - .gitignore 包含 graphify-out/
-- PR 成功创建并推送到 origin
+- graphify 研究报告结构完整（因果体用+洞见）
+- 分支成功推送到 origin
 
 **已知局限**:
+- GitHub API 无法访问，PR 未能自动创建（分支已推送，待手动创建 PR 或 API 恢复后创建）
 - Graphify 提取效果尚未在实际研究中验证，待下一个研究任务跟进
 
 ### 下一步
